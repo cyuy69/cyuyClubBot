@@ -1,0 +1,17 @@
+﻿services:
+  club-bot:
+    build: .
+    container_name: cyuyClubBot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10mb"
+        max-file: "3"
+    # Portainer / Watchtower 自動更新標籤 (選填)
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
